@@ -43,3 +43,18 @@ export async function POST(request) {
         console.log(error);
     }
 }
+
+export async function GET(request) {
+    try {
+        const data = await request.json();
+        const userIDFound = await prisma.User.findUnique({
+            where: {
+                email: (data.email).toString()
+            }
+        });
+
+        return NextResponse.json({ message: userIDFound });
+    } catch (error) {
+        console.log(error);
+    }
+}

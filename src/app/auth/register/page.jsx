@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useUser } from "@/context/UserContext";
 
 const Register = () => {
     const [name, setName] = useState("");
@@ -14,7 +13,6 @@ const Register = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const router = useRouter();
-    const { setUser } = useUser();
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -58,7 +56,6 @@ const Register = () => {
 
         if (res.ok) {
             const resJSON = await res.json();
-            setUser(resJSON);
             alert("User registered successfully");
             router.push("/auth/login");
         } else {
