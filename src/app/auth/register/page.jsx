@@ -55,7 +55,6 @@ const Register = () => {
         });
 
         if (res.ok) {
-            const resJSON = await res.json();
             alert("User registered successfully");
             router.push("/auth/login");
         } else {
