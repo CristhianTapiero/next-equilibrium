@@ -12,7 +12,7 @@ export const authOptions = {
                 password: { label: "Password", type: "password" }
             },
             async authorize(credentials) {
-                console.log(credentials)
+                console.log(`Usuario ${credentials}`)
                 const userFound = await prisma.user.findUnique({
                     where: {
                         email: credentials.email
@@ -22,10 +22,12 @@ export const authOptions = {
                 
                 const matchPass = await bcrypt.compare(credentials.password, userFound.password);
                 if (!matchPass) throw new Error('Password does not match');
+
                 return {
                     id: userFound.id,
                     email: userFound.email,
-                    name: userFound.name
+                    name: userFound.name,
+                    token: credentials.csrfToken
                 }
 
             }

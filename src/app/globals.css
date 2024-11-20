@@ -1,3 +1,51 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .main-container {
+        @apply w-full h-full flex justify-center items-center flex-col;
+    }
+    .btn-primary{
+        @apply bg-eq_neutral-500 text-eq_neutral-100 font-bold py-2 px-4 rounded hover:bg-eq_neutral-400 disabled:bg-eq_neutral-300 disabled:text-eq_neutral-200 transition-all;
+    }
+    .input{
+        @apply border-b border-b-eq_neutral-300 p-2 w-11/12;
+    }
+    .form{
+        @apply flex flex-col w-4/6 min-w-max max-w-2xl gap-y-2 items-center;
+    }
+    .link{
+        @apply hover:underline hover:underline-offset-1 hover:text-eq_green-100;
+    }
+    .btn-ghost{
+        @apply font-semibold py-2 px-2 rounded hover:bg-eq_neutral-100/90 flex items-center justify-center gap-x-1 transition-all;
+    }
+}
+
+.btn-nav-bar{
+    @apply bg-eq_green-100 text-eq_neutral-100 font-bold py-2 px-2 rounded hover:bg-eq_green-100/90 transition-all;
+}
+
+.page-structure {
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+.nav-bar{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 2rem;
+}
+
+.footer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 2rem;
+    border-top: 1px solid #F2F2F2;
+}

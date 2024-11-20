@@ -1,23 +1,30 @@
 'use client'
-import { signOut } from "next-auth/react";
-import { useSession } from "next-auth/react";
+import React from "react";
+import { useSession, getCsrfToken } from "next-auth/react";
 
 const Dashboard = () => {
-    const { data: session } = useSession();
-    console.log(session);
+    React.useEffect(() => {
+        const getToken = async () => {
+            const csrfToken = await getCsrfToken();
+            console.log(typeof csrfToken);
+            localStorage.setItem('csrfToken', csrfToken);
+        }
+        getToken();
+    }, []);
+    const {data: session} = useSession();
+
     return (
-        <div>
+        <div className="main-container">
             <h1>Dashboard</h1>
             {
                 session ? (
-                    <p>Welcome, {session.user.email}</p>
+                    <div>
+                        <p>Welcome, {session.user.email}</p>
+                    </div>
                 ) : (
                     <p>Loading...</p>
                 )
             }
-            <button onClick={() => signOut({ callbackUrl: '/auth/login', redirect: true })}>
-                Logout
-            </button>
         </div>
     );
 };

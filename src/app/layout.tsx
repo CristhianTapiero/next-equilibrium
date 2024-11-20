@@ -1,11 +1,12 @@
 import "./globals.css";
-import { SessionWrapper } from './components/SessionWrapper'
+import { SessionWrapper } from '../components/SessionWrapper'
+import Navbar from '../assets/Navbar'
+import Footer from '../assets/Footer'
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}:{
+  children: React.ReactNode}) {
   return (
     <SessionWrapper>
       <html lang="es">
@@ -16,7 +17,11 @@ export default function RootLayout({
           <title>Equilibrium</title>
         </head>
         <body>
-          {children}
+          <div className="page-structure">
+            <Navbar />
+            {children}
+            <Footer />
+          </div>
         </body>
       </html>
     </SessionWrapper>

@@ -4,7 +4,10 @@ import { NextResponse } from 'next/server';
 import prisma from '@/libs/db';
 
 export async function GET() {
+    console.log("Entra al endpoint de getUsers")
+
     const session = await getServerSession(authOptions);
+  
     if (!session) {
         return NextResponse.redirect('/auth/register');
     }
